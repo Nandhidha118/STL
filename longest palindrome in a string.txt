@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+bool isPalindrome(const string& str) {
+    string reversed = str;
+    reverse(reversed.begin(), reversed.end());
+    return str == reversed;
+}
+
+string findLongestPalindrome(const string& input) {
+    string longestPalindrome;
+
+    for (size_t i = 0; i < input.length(); ++i) {
+        for (size_t j = 1; j <= input.length() - i; ++j) {
+            string substring = input.substr(i, j);
+            if (isPalindrome(substring) && substring.length() > longestPalindrome.length()) {
+                longestPalindrome = substring;
+            }
+        }
+    }
+
+    return longestPalindrome;
+}
+
+int main() {
+    string input;
+    cout << "Enter a string: ";
+    getline(cin, input);
+
+    string longestPalindrome = findLongestPalindrome(input);
+    if (!longestPalindrome.empty()) {
+        cout << "Longest palindrome: " << longestPalindrome << endl;
+    } else {
+        cout << "No palindrome found in the input string." << endl;
+    }
+
+    return 0;
+}
