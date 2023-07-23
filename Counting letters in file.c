@@ -1,31 +1,4 @@
-#include <iostream>
-#include <set>
-
-using namespace std;
-
-int main()
-{
-    int num;
-    cin>>num;
-
-    int array[num];
-    for(int i=0;i<num;i++)
-    {
-        cin>>array[i];
-    }
-    set<int> Set;
-
-    for(int i=0;i<num;i++)
-    {
-        Set.insert(array[i]);
-    }
-
-    cout<<"The number of unique elements of the array is : "<<Set.size();
-
-    return 0;
-}
-
-3. #include <iostream>
+ #include <iostream>
 #include <fstream>
 #include <map>
 #include <string>
