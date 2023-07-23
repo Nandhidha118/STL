@@ -1,0 +1,59 @@
+#include <iostream>
+#include<vector>
+#include<algorithm>
+#include<thread>
+using namespace std;
+
+vector<int> v1{};
+vector<int> v2{};
+ vector<int> ::iterator vec1,vec2;
+void isodd()
+{
+    int x=20;
+    for(int i=1;i<=x;i++)
+    {
+        if(i%2 !=0 )
+        {
+            v1.push_back(i);
+        }
+    }
+}
+void iseven()
+{
+   int x=20;
+    for(int i=1;i<=x;i++)
+    {
+        if(i%2 ==0 )
+        {
+            v2.push_back(i);
+        }
+    }
+}
+void disp()
+{
+
+  cout << "odd elements:\n" << endl;
+    for(vec1=v1.begin();vec1<v1.end();vec1++)
+    {
+        cout<< *vec1 << " ";
+    }
+    cout<<"\n";
+    cout << "even elements:\n" << endl;
+    for(vec2=v2.begin();vec2<v2.end();vec2++)
+    {
+        cout<< *vec2 << " ";
+    }
+
+
+}
+
+int main()
+{
+    thread th1(isodd);
+    thread th2(iseven);
+    thread t3(disp);
+    th1.join();
+    th2.join();
+    t3.join();
+    return 0;
+}
